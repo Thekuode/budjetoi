@@ -5,8 +5,8 @@ const Money = require('../models/money')
 //Get all money
 router.get('/', async(req,res) => {
     try{
-        const entries = await Money.find().sort({_id: -1})
-        res.json(entries)
+        const money = await Money.find().sort({_id: -1})
+        res.json(money)
     } catch (err) {
     res.status(500).json({ message: err.message });
   }
