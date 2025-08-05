@@ -1,13 +1,16 @@
+require('dotenv').config();
+
 const express = require('express')
+
 const app = express()
-const port = 3000
+const port = process.env.PORT
 const mongoose = require('mongoose')
 
-const mongoUri = 'mongodb+srv://ronisvlnn:24x4nCpCZUSFI21M@cluster0.qsmk4zv.mongodb.net/BudjettiApp?retryWrites=true&w=majority&appName=Cluster0'
+const mongoUri = process.env.MONGO_URI
 
 mongoose.connect(mongoUri)
   .then(() => console.log('MongoDB connected'))
-  .catch(err => console.log('MongoDB connection error:', err));
+  .catch(err => console.log('MongoDB connection error:', err))
 
 const homeRouter = require('./routes/home')
 const moneyRouter = require('./routes/money')
